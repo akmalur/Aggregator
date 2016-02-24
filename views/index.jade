@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  ul(class='feed')
+    each image, i in result.images
+      li(class=('feed-item'))
+        span(class=('image_card'))
+          h2= image.caption
+          span(class='image')
+            a(href='details/'+image.id)
+              img(src=image.link)
+          span(class='meta')
+            span(class='author')= image.author
+            span(class='comments stat')
+              img(src='https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/comments.png' height=20 width=20)
+              span= image.comments
+            span(class='views stat')
+              img(src='https://cdn0.iconfinder.com/data/icons/photography/512/e36-128.png' width=20 height=20)
+              span= image.views
+   if (result.numberOfPages > 1)
+     - var page = 0;
+     div(class='page-wrapper')
+       ul(class='pages')
+         while page < result.numberOfPages
+           if (page === result.pageNumber)
+             li(class='current-page page')= ++page
+           else
+             li(class='page')
+               a(href='/'+ (page++))= page

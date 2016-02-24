@@ -1,0 +1,10 @@
+I have decided to use a light-weight database and pre-populate it with data from 3rd party services.
+This reduces the dependency application has on external sources as well as increases the performance of the app.
+In production environment, there should be a separate service whose sole responsibility would be maintaining and
+updating images currently stored in the database.
+
+I have decided not to implement infinite-scroll, because in this particular case, I think paging would be more beneficial,
+because it will allow the user to have a reference to where within the feed he currently is.
+
+In this current implementation I've created a simple aggregatorService that is responsible for communicating with
+3rd part API clients, as well as, imageRepository.

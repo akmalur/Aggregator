@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  div
+    h4(class='caption')= details.item.id
+    div
+      img(src=details.item.link)
+    div(class='meta')
+      div(class='author')= details.item.author
+      div(class='views stat')
+        img(src='https://cdn0.iconfinder.com/data/icons/photography/512/e36-128.png' width=20 height=20)
+        div= details.item.views
+      if details.comments
+        div(class='comments')
+          ul
+            each comment, i in details.comments
+              li
+                div(class='comment_author')=details.item.author
+                div(class='comment_comment')=comment.comment
+      div(class='timestamp')=details.item.date
